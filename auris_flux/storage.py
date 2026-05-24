@@ -21,7 +21,7 @@ class Storage:
 
 		with open(f"/tmp/{filename}", "wb") as f:
 			f.write(image_data)
-			print(" [*] Downloaded Successfully. File: {filename}")
+			print(f" [*] Downloaded Successfully. File: {filename}")
 
 	def upload(self, bucketname:str, object_key:str, new_object_key:str, content_type:str):
 
