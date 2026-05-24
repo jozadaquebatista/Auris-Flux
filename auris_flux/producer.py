@@ -28,9 +28,6 @@ class Producer:
 
         self.channel.queue_declare(queue=self.queue, durable=True, arguments={'x-queue-type': 'quorum'})
 
-    def __del__(self):
-        self.connection.close()
-
     def publish(self, body: dict):
 
         self.channel.basic_publish(exchange='',
@@ -38,3 +35,7 @@ class Producer:
                                    body=json.dumps(body))
 
         print(f" [*] Sent '{json.dumps(body)}'")
+
+    def close(self):
+        self.connection.close()
+
